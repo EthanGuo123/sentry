@@ -28,9 +28,24 @@ This script will take care of all the things you need to get started, including 
 
 ### Login
 Use the following account to login in or register a new account using your own email and password.
+
 username : dev@nivelo.io
 password: Nivelo2020
 
+### Connect Local Projects
+1. [Create a new project](https://docs.sentry.io/product/sentry-basics/integrate-frontend/create-new-project/)
+
+2. Install Sentry SDK by running:
+# Using yarn
+yarn add @sentry/browser @sentry/tracing
+# Using npm
+npm install --save @sentry/browser @sentry/tracing
+
+3. Open config.file in your repo(e.g. For the platform repo, open the file utils/Config.ts) and replace the old DSN with the DSN created in step 1.
+
+4.Go to Sentry.config.file in your repo(e.g For the platform repo, go to integrations/Sentry.ts), In the Sentry SDK configuration part, adjust configure options based on your need, see details at [configuration documentations](https://docs.sentry.io/platforms/javascript/configuration/)
+
+5. Now, you can run the local app on your local environment integrated with the Sentry SDK. Sentry is ready to capture error in your app.
 ## Tips & Tricks
 
 ### Event Retention
