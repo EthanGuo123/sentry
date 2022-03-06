@@ -24,12 +24,32 @@ Please keep in mind to check the `.env` file for changes, when you perform an up
 
 To get started with all the defaults, simply clone the repo and run `./install.sh` in your local check-out. Sentry uses Python 3 by default since December 4th, 2020 and Sentry 21.1.0 is the last version to support Python 2.
 
-During the install, a prompt will ask if you want to create a user account. If you require that the install not be blocked by the prompt, run `./install.sh --skip-user-prompt`.
+This script will take care of all the things you need to get started, including a base-line configuration, and then will tell you to run `docker-compose up -d` to start Sentry. Sentry binds to port 9000 by default. You should be able to reach the login page at http://127.0.0.1:9000.
 
-Thinking of not managing this yourself? Check out the [SaaS migration docs](https://docs.sentry.io/product/sentry-basics/migration/) or [contact us](https://sentry.io/from/self-hosted) for help.
+### Login
+Use the following account to login in or register a new account using your own email and password.
 
-Please visit [our documentation](https://develop.sentry.dev/self-hosted/) for everything else.
+Username : dev@nivelo.io  /
+Password: Nivelo2020
 
+### Connect Local Projects
+1. [Create a new project](https://docs.sentry.io/product/sentry-basics/integrate-frontend/create-new-project/)
+
+2. Install Sentry SDK by running:
+
+--Using yarn
+
+    yarn add @sentry/browser @sentry/tracing
+    
+--Using npm
+
+    npm install --save @sentry/browser @sentry/tracing
+
+3. Open config.file in your repo(e.g. For the platform repo, open the file utils/Config.ts) and replace the old DSN with the DSN created in step 1.
+
+4. Go to Sentry.config.file in your repo(e.g For the platform repo, go to integrations/Sentry.ts), In the Sentry SDK configuration part, adjust configure options based on your need, see details at [configuration documentations](https://docs.sentry.io/platforms/javascript/configuration/)
+
+5. Now, you can run the local app on your local environment integrated with the Sentry SDK. Sentry is ready to capture errors in your app.
 ## Tips & Tricks
 
 ### Event Retention
@@ -60,4 +80,10 @@ Where you replace `83b1380` with the sha you want to use.
 
 [build-status-image]: https://github.com/getsentry/self-hosted/workflows/test/badge.svg
 [build-status-url]: https://git.io/JUYkh
+
+
+
+Thinking of not managing this yourself? Check out the [SaaS migration docs](https://docs.sentry.io/product/sentry-basics/migration/) or [contact us](https://sentry.io/from/self-hosted) for help.
+
+Please visit [our documentation](https://develop.sentry.dev/self-hosted/) for everything else.
 
